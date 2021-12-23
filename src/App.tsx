@@ -6,13 +6,21 @@ import { BrowserRouter } from "react-router-dom";
 import Produtos from "./components/Produtos";
 import './App.css'
 import ProdutosHookForm from "./components/ProdutosHookForm";
-
+import {Admin, ListGuesser, Resource} from 'react-admin'
+import jsonServerProvider from 'ra-data-json-server'
+import { UserList } from "./users";
+const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 
 function App() {
 
   return(
     // <Produtos />
+    <>
+    <Admin dataProvider={dataProvider}>
+      <Resource name="users" list={UserList} />
+    </Admin>
     <ProdutosHookForm />
+    </>
   )
 
 //   const context = useAppContext()
